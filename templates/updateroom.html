@@ -1,0 +1,55 @@
+{% extends 'sidebar.html' %}
+ {% block content %}
+ {% for d in user %}
+
+<h4 style="text-align: center;">Update Room</h4>
+<div class="form-group">
+    <div class="row">
+        <div class="col md-3"></div>
+        <div class="col md-3">
+            <div>
+                
+            </div>
+            <form action="/update_room" method="post">
+                <div class="form-group">
+                    <label for="roomno" classs="from-label"> Enter Room Number </label>
+                    <input type="text" value="{{d[0]}}" class="form-control" name="roomno" id="roomno">
+                </div>
+                <div class="form-group">
+                    <label for="Availability" classs="from-label">Availability </label>
+                    <select class="form-control" id="Availability" name="Availability"  required>
+                           <option selected value="{{d[1]}}">{{d[1]}}</option>
+                           <option value="occupied">occupied</option>
+                           <option value="Available">Available</option>
+                         </select>
+                </div>
+                <div class="form-group">
+                    <label for="status" classs="from-label">status </label>
+                    <select class="form-control" id="status" name="status"  required>
+                        <option selected value="{{d[2]}}">{{d[2]}}</option>
+                        <option value="cleaned">cleaned</option>
+                        <option value="Dirty">Dirty</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="bedtype" classs="from-label">  Bed Type </label>
+                    <select class="form-control" id="bedtype" name="bedtype"  required>
+                        <option selected value="{{d[3]}}">{{d[3]}}</option>
+                        <option value="Single bed">Single bed</option>
+                        <option value="Double bed">Double bed</option>
+                      </select>
+                </div>
+                <div class="form-group">
+                    <label for="price" classs="from-label">Price </label>
+                    <input type="text" value="{{ d[4] }}" class="form-control" name="price" id="price">
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success btn-sm btn-block">Update</button>
+            </form>
+        </div>
+        <div class="col md-3"></div>
+            
+    </div>
+</div> 
+    {% endfor %}
+{% endblock %}
